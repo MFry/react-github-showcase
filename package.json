@@ -9,6 +9,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "flow-bin": "^0.86.0",
+    "fontfaceobserver": "^2.0.13",
     "history": "^4.7.2",
     "immutable": "^4.0.0-rc.12",
     "invariant": "^2.2.4",
@@ -16,6 +17,9 @@
     "moment": "^2.22.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
@@ -23,7 +27,8 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.1.1",
     "redux-saga": "^0.16.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -36,7 +41,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.2.0",
-    "lint-staged": "^8.0.5",
+    "lint-staged": "^8.1.0",
     "prettier": "^1.15.2",
     "prettier-eslint": "^8.8.2"
   },
