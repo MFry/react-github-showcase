@@ -35,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.0.5",
     "prettier": "^1.15.2",
     "prettier-eslint": "^8.8.2"
   },
@@ -42,6 +44,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "check-staged": "lint-staged",
     "lint": "eslint src -c .eslintrc.json --ext js,jsx",
     "eject": "react-scripts eject"
   },
@@ -53,5 +56,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ],
+    "*.{js,jsx,json,md}": [
+      "prettier --list-different"
+    ]
+  }
 }
