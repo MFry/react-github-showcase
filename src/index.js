@@ -8,7 +8,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
-import './index.css';
 import history from './utils/history';
 import App from './containers/App/App';
 import configureStore from './configureStore';
