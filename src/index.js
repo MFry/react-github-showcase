@@ -8,6 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
+// Reset default css values to be consistant across browsers
+import 'sanitize.css/sanitize.css';
 import history from './utils/history';
 import App from './containers/App/App';
 import configureStore from './configureStore';
