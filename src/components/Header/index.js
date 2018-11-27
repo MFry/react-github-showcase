@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import A from '../A';
+import Code from '../Code';
 import logo from './logo.svg';
 
 const HeaderWrapper = styled.div`
@@ -27,16 +28,40 @@ const LogoWrapper = styled.img`
   }
 `;
 
+const Link = ({
+  className = '',
+  href = '',
+  ...props
+}: {
+  className: string,
+  href: string,
+  children: Object,
+}) => (
+  <A
+    target="_blank"
+    rel="noopener noreferrer"
+    className={className}
+    href={href}
+  >
+    {/* eslint-disable-next-line react/destructuring-assignment */}
+    {props.children}
+  </A>
+);
+
 const Header = () => (
   <HeaderWrapper>
     <header className="App-header">
       <LogoWrapper src={logo} alt="logo" />
       <p>
-        Edit <code>src/App.js</code> and save to reload.
+        Edit <Code>src/App.js</Code> and save to reload.
       </p>
-      <A href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+      <Link
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Learn React
-      </A>
+      </Link>
     </header>{' '}
   </HeaderWrapper>
 );

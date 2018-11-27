@@ -7,6 +7,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router/immutable';
 import FontFaceObserver from 'fontfaceobserver';
 // Reset default css values to be consistant across browsers
 import 'sanitize.css/sanitize.css';
@@ -31,7 +32,9 @@ const MOUNT_NODE = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   MOUNT_NODE,
 );

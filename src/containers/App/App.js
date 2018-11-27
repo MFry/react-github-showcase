@@ -14,15 +14,6 @@ const AppWrapper = styled.div`
   -moz-osx-font-smoothing: grayscale;
 `;
 
-/*
-const Code = styled.div`
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-`;
-*/
-
 const AppContentWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
