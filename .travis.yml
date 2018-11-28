@@ -1,3 +1,13 @@
 language: node_js
-node_js: 'node'
-cache: yarn
+
+node_js:
+  - 'node'
+  - 'lts/*'
+
+script:
+  - yarn test -- --maxWorkers=4
+  - yarn run build
+
+cache:
+  directories:
+    - node_modules
