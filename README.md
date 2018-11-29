@@ -1,5 +1,7 @@
 # Github Portfolio Showcase
 
+[![Build Status](https://travis-ci.org/MFry/react-github-showcase.svg?branch=master)](https://travis-ci.org/MFry/react-github-showcase)
+
 > Coding Challenge for Clear Capital
 
 A SPA developer showcase using github and stack overflow.
