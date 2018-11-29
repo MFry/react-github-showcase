@@ -45,8 +45,12 @@ export class HomePage extends React.PureComponent<Props> {
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    const { username, onSubmitForm } = this.props;
+    const { username, onSubmitForm, onChangeUsername } = this.props;
     if (username && username.trim().length > 0) {
+      onSubmitForm();
+    } else {
+      const fakeEvent = { target: { value: 'mfry' } };
+      onChangeUsername(fakeEvent);
       onSubmitForm();
     }
   }

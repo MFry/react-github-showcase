@@ -15,7 +15,7 @@ import { CHANGE_USERNAME } from './constants';
 
 // The initial state of the App
 export const initialState = fromJS({
-  username: 'mfry',
+  username: '',
 });
 
 function homeReducer(state = initialState, action) {
