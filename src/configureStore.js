@@ -15,9 +15,15 @@ export default function configureStore(initialState = {}, history) {
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  // Perform redux logging only in development
+  if (process.env.NODE_ENV === `development`) {
+    // eslint-disable-next-line global-require
+    const { logger } = require(`redux-logger`);
+
+    middlewares.push(logger);
+  }
 
   const enhancers = [applyMiddleware(...middlewares)];
-
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =

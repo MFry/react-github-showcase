@@ -15,9 +15,9 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import FontFaceObserver from 'fontfaceobserver';
 // Reset default css values to be consistant across browsers
 import 'sanitize.css/sanitize.css';
-import history from './utils/history';
-import App from './containers/App/App';
-import configureStore from './configureStore';
+import App from 'containers/App';
+import configureStore from 'configureStore';
+import history from 'utils/history';
 import * as serviceWorker from './serviceWorker';
 
 // Observe loading of Roboto (to remove Roboto, remove the <link> tag in

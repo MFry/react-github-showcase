@@ -20,6 +20,13 @@ module.exports = {
       experimentalObjectRestSpread: true,
     },
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+    },
+  },
   extends: [
     'airbnb',
     'plugin:prettier/recommended',
@@ -37,5 +44,6 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'prettier/prettier': ['error', { parser: 'flow' }],
     'react/no-did-update-set-state': 0,
+    'jsx-a11y/label-has-for': 0,
   },
 };

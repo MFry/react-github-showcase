@@ -1,7 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import Header from '../../components/Header';
+import { Switch, Route } from 'react-router-dom';
+import Header from 'components/Header';
+import HomePage from 'containers/HomePage/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -35,7 +38,12 @@ const App = () => (
       />
     </Helmet>
     <Header />
-    <AppContentWrapper>Filler</AppContentWrapper>
+    <AppContentWrapper>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="" component={NotFoundPage} />
+      </Switch>
+    </AppContentWrapper>
   </AppWrapper>
 );
 
