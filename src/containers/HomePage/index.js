@@ -17,6 +17,7 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
+import Intro from 'containers/Intro';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import PageWrapper from './PageWrapper';
@@ -36,6 +37,7 @@ type Props = {
   repos: Array<Object> | boolean,
   onSubmitForm: Function,
   username: string,
+  initialSetUsername: string,
   onChangeUsername: Function,
 };
 
@@ -45,12 +47,17 @@ export class HomePage extends React.PureComponent<Props> {
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    const { username, onSubmitForm, onChangeUsername } = this.props;
+    const {
+      username,
+      onSubmitForm,
+      onChangeUsername,
+      initialSetUsername,
+    } = this.props;
+    if (initialSetUsername && initialSetUsername.trim().length > 0) {
+      const mockEvent = { target: { value: initialSetUsername } };
+      onChangeUsername(mockEvent);
+    }
     if (username && username.trim().length > 0) {
-      onSubmitForm();
-    } else {
-      const fakeEvent = { target: { value: 'mfry' } };
-      onChangeUsername(fakeEvent);
       onSubmitForm();
     }
   }
@@ -76,6 +83,7 @@ export class HomePage extends React.PureComponent<Props> {
           <title>Home Page</title>
           <meta name="description" content="A React.js Github API interface" />
         </Helmet>
+        <Intro />
         <div>
           <Section>
             <H2>Showing Github repositories for</H2>

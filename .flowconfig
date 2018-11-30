@@ -2,6 +2,7 @@
 .*/node_modules/eslint-plugin-jsx-a11y/.*
 .*/node_modules/react-scripts/.*
 .*/node_modules/babel-plugin-emotion/.*
+.*/node_modules/.*
 [include]
 
 [libs]

@@ -18,15 +18,6 @@ const AppWrapper = styled.div`
   -moz-osx-font-smoothing: grayscale;
 `;
 
-const AppContentWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
-`;
-
 const App = () => (
   <AppWrapper>
     <Helmet
@@ -39,12 +30,14 @@ const App = () => (
       />
     </Helmet>
     <Header />
-    <AppContentWrapper>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-    </AppContentWrapper>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={() => <HomePage initialSetUsername="mfry" />}
+      />
+      <Route path="" component={NotFoundPage} />
+    </Switch>
     <Footer />
   </AppWrapper>
 );
