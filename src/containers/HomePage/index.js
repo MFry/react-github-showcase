@@ -20,7 +20,6 @@ import {
 import Intro from 'containers/Intro';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
-import PageWrapper from './PageWrapper';
 import AtPrefix from './AtPrefix';
 import Form from './Form';
 import Input from './Input';
@@ -56,6 +55,7 @@ export class HomePage extends React.PureComponent<Props> {
     if (initialSetUsername && initialSetUsername.trim().length > 0) {
       const mockEvent = { target: { value: initialSetUsername } };
       onChangeUsername(mockEvent);
+      onSubmitForm();
     }
     if (username && username.trim().length > 0) {
       onSubmitForm();
@@ -78,33 +78,31 @@ export class HomePage extends React.PureComponent<Props> {
     };
 
     return (
-      <PageWrapper>
+      <article>
         <Helmet>
           <title>Home Page</title>
           <meta name="description" content="A React.js Github API interface" />
         </Helmet>
         <Intro />
-        <div>
-          <Section>
-            <H2>Showing Github repositories for</H2>
-            <Form onSubmit={onSubmitForm}>
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor="username">
-                Github user
-                <AtPrefix>@</AtPrefix>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="mxstbr"
-                  value={username}
-                  onChange={onChangeUsername}
-                />
-              </label>
-            </Form>
-            <ReposList {...reposListProps} />
-          </Section>
-        </div>
-      </PageWrapper>
+        <Section>
+          <H2>Showing Github repositories for</H2>
+          <Form onSubmit={onSubmitForm}>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor="username">
+              Github user
+              <AtPrefix>@</AtPrefix>
+              <Input
+                id="username"
+                type="text"
+                placeholder="mxstbr"
+                value={username}
+                onChange={onChangeUsername}
+              />
+            </label>
+          </Form>
+          <ReposList {...reposListProps} />
+        </Section>
+      </article>
     );
   }
 }
