@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -31,12 +31,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -46,7 +46,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -62,8 +62,21 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 ### Initial Configuration
 
-Some projects require initial configuration (e.g. access tokens or keys, `npm i`).
-This is the section where you would document those requirements.
+##### `.env` file
+
+File present to allow for absolute pathing in Create React Applications.
+
+##### Prettier and Eslint
+
+Prettier handles all the formatting concerns and Eslint exclusively handles linting, style and best practices.
+
+##### `.editorconfig` file
+
+Normalizes editor configurations.
+
+##### `.nvmrc` file
+
+Locks the node version for development.
 
 ## Developing
 
@@ -71,32 +84,37 @@ Here's a brief intro about what a developer must do in order to start developing
 the project further:
 
 ```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
+git clone https://github.com/MFry/react-github-showcase.git
+cd react-github-showcase/
+yarn # or npm install
 ```
 
-And state what happens step-by-step.
+Note that there might be additional steps to integrate Prettier, Eslint, Stylelint, and Flow with your editor.
+
+### Debugging
+
+In visual studio code add to your `.vscode/launch.json`
+the following:
+
+```
+  {
+    "type": "chrome",
+    "request": "launch",
+    "name": "Launch Chrome",
+    "port": 9222,
+    "url": "http://localhost:3000",
+    "webRoot": "${workspaceFolder}/app",
+    "sourceMapPathOverrides": {
+      "webpack:///./app/*": "${webRoot}/*"
+    }
+  }
+```
 
 #### Architecture
 
 We use the container/component architecture. containers/ contains React components which are connected to the redux store. components/ contains dumb React components which depend on containers for data. Container components care about how things work, while components care about how things look.
 
 We've found that for many applications treating single pages (e.g. the LoginPage, the HomePage, etc.) as containers and their small parts (e.g. the Login form, the Navigation bar) as components works well, but there are no rigid rules. Bend the architecture to the needs of your app, nothing is set in stone!
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
-
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
 
 ### Deploying / Publishing
 

@@ -5,22 +5,22 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import { fromJS } from 'immutable';
+import configureMockStore from 'redux-mock-store';
 
 import ReposList from 'components/ReposList';
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
 
+const mockStore = configureMockStore();
+const store = mockStore(fromJS({}));
+
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
     const renderedComponent = shallow(
-      <HomePage
-        loading
-        onChangeUsername={() => {}}
-        onSubmitForm={() => {}}
-        error={false}
-        repos={[]}
-      />,
+      <HomePage loading error={false} repos={[]} />,
     );
     expect(
       renderedComponent.contains(
@@ -32,31 +32,39 @@ describe('<HomePage />', () => {
   it('should render fetch the repos on mount if a username exists', () => {
     const submitSpy = jest.fn();
     mount(
-      <HomePage
-        username="Not Empty"
-        onChangeUsername={() => {}}
-        onSubmitForm={submitSpy}
-      />,
+      <Provider store={store}>
+        <HomePage
+          username="Not Empty"
+          onChangeUsername={() => {}}
+          onSubmitForm={submitSpy}
+        />
+      </Provider>,
     );
     expect(submitSpy).toHaveBeenCalled();
   });
 
-  it('should call onSubmitForm if username is an empty string', () => {
+  it('should not call onSubmitForm if username is an empty string', () => {
     const submitSpy = jest.fn();
     mount(
-      <HomePage
-        username=""
-        onChangeUsername={() => {}}
-        onSubmitForm={submitSpy}
-      />,
+      <Provider store={store}>
+        <HomePage
+          username=""
+          onChangeUsername={() => {}}
+          onSubmitForm={submitSpy}
+        />
+      </Provider>,
     );
-    expect(submitSpy).toHaveBeenCalled();
+    expect(submitSpy).not.toHaveBeenCalled();
   });
 
-  it('shouldcall onSubmitForm if username is null', () => {
+  it('should not call onSubmitForm if username is null', () => {
     const submitSpy = jest.fn();
-    mount(<HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />);
-    expect(submitSpy).toHaveBeenCalled();
+    mount(
+      <Provider store={store}>
+        <HomePage onChangeUsername={() => {}} onSubmitForm={submitSpy} />
+      </Provider>,
+    );
+    expect(submitSpy).not.toHaveBeenCalled();
   });
 
   describe('mapDispatchToProps', () => {
