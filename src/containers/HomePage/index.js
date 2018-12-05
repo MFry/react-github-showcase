@@ -18,11 +18,8 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import Intro from 'containers/Intro';
-import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import Form from './Form';
-import Input from './Input';
+import CardCarousel from 'components/CardCarousel';
 import Section from './Section';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
@@ -63,14 +60,7 @@ export class HomePage extends React.PureComponent<Props> {
   }
 
   render() {
-    const {
-      loading,
-      error,
-      repos,
-      username,
-      onSubmitForm,
-      onChangeUsername,
-    } = this.props;
+    const { loading, error, repos } = this.props;
     const reposListProps = {
       loading,
       error,
@@ -84,22 +74,10 @@ export class HomePage extends React.PureComponent<Props> {
           <meta name="description" content="A React.js Github API interface" />
         </Helmet>
         <Intro />
+        <Section style={{ paddingLeft: '2vw', paddingRight: '2vw' }}>
+          <CardCarousel {...reposListProps} />
+        </Section>
         <Section>
-          <H2>Showing Github repositories for</H2>
-          <Form onSubmit={onSubmitForm}>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor="username">
-              Github user
-              <AtPrefix>@</AtPrefix>
-              <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
-                value={username}
-                onChange={onChangeUsername}
-              />
-            </label>
-          </Form>
           <ReposList {...reposListProps} />
         </Section>
       </article>

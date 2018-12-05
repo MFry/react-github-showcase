@@ -34,7 +34,7 @@ const App = () => (
       <Route
         exact
         path="/"
-        render={() => <HomePage initialSetUsername="mfry" />}
+        render={() => <HomePage initialSetUsername="jdalton" />}
       />
       <Route path="" component={NotFoundPage} />
     </Switch>
