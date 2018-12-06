@@ -14,10 +14,10 @@ import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
 
-const mockStore = configureMockStore();
-const store = mockStore(fromJS({}));
-
 describe('<HomePage />', () => {
+  const mockStore = configureMockStore();
+  const store = mockStore(fromJS({}));
+
   it('should render the repos list', () => {
     const renderedComponent = shallow(
       <HomePage loading error={false} repos={[]} />,

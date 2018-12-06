@@ -18,8 +18,9 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import Intro from 'containers/Intro';
-import ReposList from 'components/ReposList';
 import CardCarousel from 'components/CardCarousel';
+// eslint-disable-next-line no-unused-vars
+import DataVisuals from 'containers/DataVisuals';
 import Section from './Section';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
@@ -71,15 +72,22 @@ export class HomePage extends React.PureComponent<Props> {
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="A React.js Github API interface" />
+          <meta
+            name="description"
+            content="A React.js Github API landing page"
+          />
         </Helmet>
         <Intro />
-        <Section style={{ paddingLeft: '2vw', paddingRight: '2vw' }}>
+        <Section
+          style={{
+            height: '30vh',
+            paddingLeft: '2vw',
+            paddingRight: '2vw',
+          }}
+        >
           <CardCarousel {...reposListProps} />
         </Section>
-        <Section>
-          <ReposList {...reposListProps} />
-        </Section>
+        {/* <DataVisuals /> */}
       </article>
     );
   }
