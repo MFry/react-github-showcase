@@ -39,7 +39,7 @@ const Visualizations = ({ repos = [] }: Props) => {
     });
     return (
       <Section>
-        <PieChart title="Repo Statistics" dataPoints={dataPoints} />
+        <PieChart title="Repo Statistics" data={dataPoints} />
       </Section>
     );
   }

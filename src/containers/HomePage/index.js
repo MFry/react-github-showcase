@@ -87,7 +87,7 @@ export class HomePage extends React.PureComponent<Props> {
         >
           <CardCarousel {...reposListProps} />
         </Section>
-        {/* <DataVisuals /> */}
+        <DataVisuals />
       </article>
     );
   }
