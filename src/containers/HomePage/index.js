@@ -17,12 +17,12 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
+import { loadRepos, loadEvents } from 'containers/App/actions';
 import Intro from 'containers/Intro';
 import CardCarousel from 'components/CardCarousel';
 // eslint-disable-next-line no-unused-vars
 import DataVisuals from 'containers/DataVisuals';
 import Section from './Section';
-import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
@@ -99,6 +99,7 @@ export function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
+      dispatch(loadEvents());
     },
   };
 }

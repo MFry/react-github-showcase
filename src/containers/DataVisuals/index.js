@@ -4,49 +4,33 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
-import PieChart from 'components/PieChart';
-import {
-  makeSelectRepos,
-  makeSelectLoading,
-  makeSelectError,
-} from 'containers/App/selectors';
+import RadialBarChart from 'components/RadialRepoChart';
+import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import { makeSelectReposStats } from './selectors';
 
-const Section = styled.section`
-  margin: 3em auto;
-  color: #292b2c;
-
+const Section = styled.div`
+  display: flex;
+  align-items: center;
+  height: 50vh;
   &:first-child {
     margin-top: 0;
   }
 `;
 type Props = {
-  repos: Array<Object> | boolean,
+  data: Array<Object> | boolean,
 };
-const Visualizations = ({ repos = [] }: Props) => {
-  const dataPoints = [
-    { label: 'Forks', value: 0 },
-    { label: 'Issues', value: 0 },
-    { label: 'StarGazers', value: 0 },
-  ];
-  if (repos !== false) {
-    repos.forEach(repo => {
-      // Add Fork
-      dataPoints[0].value += repo.forks;
-      // Add Issue
-      dataPoints[1].value += repo.open_issues_count;
-      // Add StarGazers
-      dataPoints[2].value += repo.stargazers_count;
-    });
+const Visualizations = ({ data }: Props) => {
+  if (data !== false) {
     return (
       <Section>
-        <PieChart title="Repo Statistics" data={dataPoints} />
+        <RadialBarChart title="Repo Statistics" data={data} />
       </Section>
     );
   }
   return null;
 };
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
+  data: makeSelectReposStats(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
