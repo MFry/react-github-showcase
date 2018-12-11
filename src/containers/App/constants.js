@@ -12,3 +12,6 @@
 export const LOAD_REPOS = 'githubPortfolio/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'githubPortfolio/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'githubPortfolio/App/LOAD_REPOS_ERROR';
+export const LOAD_EVENTS = 'githubPortfolio/App/LOAD_EVENTS';
+export const LOAD_EVENTS_SUCCESS = 'githubPortfolio/App/LOAD_EVENTS_SUCCESS';
+export const LOAD_EVENTS_ERROR = 'githubPortfolio/App/LOAD_EVENTS_ERROR';
