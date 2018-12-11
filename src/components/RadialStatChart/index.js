@@ -1,11 +1,13 @@
-/* eslint-disable no-return-assign */
 import React from 'react';
 import { RadialBarChart, RadialBar, Legend } from 'recharts';
 
-const RepoChart = ({ title, data }: { title: string, data: Array<Object> }) => {
-  const fill = ['#8884d8', '#83a6ed', '#8dd1e1'];
-  // eslint-disable-next-line no-param-reassign
-  data.map((d, i) => (d.fill = fill[i]));
+const RadialStatChart = ({
+  title,
+  data,
+}: {
+  title: string,
+  data: Array<Object>,
+}) => {
   const style = {
     top: 0,
     left: 350,
@@ -44,4 +46,4 @@ const RepoChart = ({ title, data }: { title: string, data: Array<Object> }) => {
   );
 };
 
-export default RepoChart;
+export default RadialStatChart;

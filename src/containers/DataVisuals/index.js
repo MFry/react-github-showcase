@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
-import RadialBarChart from 'components/RadialRepoChart';
+import RadialBarChart from 'components/RadialStatChart';
 import { makeSelectLoading, makeSelectError } from 'containers/App/selectors';
-import { makeSelectReposStats } from './selectors';
+import { makeSelectReposStats, makeSelectEventsStats } from './selectors';
 
 const Section = styled.div`
   display: flex;
@@ -17,20 +17,23 @@ const Section = styled.div`
   }
 `;
 type Props = {
-  data: Array<Object> | boolean,
+  repoStats: Array<Object> | boolean,
+  eventStats: Array<Object> | boolean,
 };
-const Visualizations = ({ data }: Props) => {
-  if (data !== false) {
+const Visualizations = ({ repoStats, eventStats }: Props) => {
+  if (repoStats !== false) {
     return (
       <Section>
-        <RadialBarChart title="Repo Statistics" data={data} />
+        <RadialBarChart title="Repos Statistics" data={repoStats} />
+        <RadialBarChart title="Events Statistics" data={eventStats} />
       </Section>
     );
   }
   return null;
 };
 const mapStateToProps = createStructuredSelector({
-  data: makeSelectReposStats(),
+  repoStats: makeSelectReposStats(),
+  eventStats: makeSelectEventsStats(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });

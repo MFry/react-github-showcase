@@ -11,24 +11,57 @@ const makeSelectReposStats = () =>
     globalState => {
       const repos = globalState.getIn(['userData', 'repositories']);
       if (repos !== false) {
-        const dataPoints = [
-          { name: 'Forks', value: 0 },
-          { name: 'Issues', value: 0 },
-          { name: 'StarGazers', value: 0 },
+        const data = [
+          { name: 'Forks', value: 0, fill: '#8884d8' },
+          { name: 'Issues', value: 0, fill: '#83a6ed' },
+          { name: 'StarGazers', value: 0, fill: '#8dd1e1' },
         ];
         repos.forEach(repo => {
           // Add Fork
-          dataPoints[0].value += repo.forks;
+          data[0].value += repo.forks;
           // Add Issue
-          dataPoints[1].value += repo.open_issues_count;
+          data[1].value += repo.open_issues_count;
           // Add StarGazers
-          dataPoints[2].value += repo.stargazers_count;
+          data[2].value += repo.stargazers_count;
         });
-        return dataPoints;
+        return data;
       }
       return false;
     },
   );
 
-// eslint-disable-next-line import/prefer-default-export
-export { makeSelectReposStats };
+const makeSelectEventsStats = () =>
+  createSelector(
+    selectGlobal,
+    globalState => {
+      const events = globalState.getIn(['userData', 'events']);
+      if (events !== false) {
+        const data = [
+          { name: 'Pull Requests', value: 0, fill: '#FF7F50' },
+          { name: 'Comments', value: 0, fill: '#FF4500' },
+          { name: 'Push Commit', value: 0, fill: '#FF8C00' },
+          { name: 'Miscellaneous', value: 0, fill: '#000000' },
+        ];
+        events.forEach(e => {
+          switch (e.type) {
+            case 'PullRequestEvent':
+              data[0].value += 1;
+              break;
+            case 'IssueCommentEvent':
+              data[1].value += 1;
+              break;
+            case 'PushEvent':
+              data[2].value += 1;
+              break;
+            default:
+              data[3].value += 1;
+              break;
+          }
+        });
+        return data;
+      }
+      return false;
+    },
+  );
+
+export { makeSelectReposStats, makeSelectEventsStats };
