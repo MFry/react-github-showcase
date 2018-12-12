@@ -13,7 +13,7 @@ import {
 import { LOAD_REPOS, LOAD_EVENTS } from 'containers/App/constants';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
 import request from 'utils/request';
-
+import { events as mockEvents, repos as mockRepos } from 'mockData';
 /**
  * Github repos request/response handler
  */
@@ -25,7 +25,9 @@ export function* getRepos() {
   try {
     // Call our request helper (see 'utils/request')
     const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    // Mock data injected
+    const mockedRepos = repos.concat(mockRepos);
+    yield put(reposLoaded(mockedRepos, username));
   } catch (err) {
     yield put(repoLoadingError(err));
   }
@@ -40,7 +42,9 @@ export function* getEvents() {
 
   try {
     const events = yield call(request, requestURL);
-    yield put(eventsLoaded(events, username));
+    // Mock data injected
+    const mockedEvents = events.concat(mockEvents);
+    yield put(eventsLoaded(mockedEvents, username));
   } catch (err) {
     yield put(eventsLoadingError(err));
   }

@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+const base10Radix = 10;
 const selectGlobal = state => state.get('global');
 
 /**
@@ -18,11 +19,11 @@ const makeSelectReposStats = () =>
         ];
         repos.forEach(repo => {
           // Add Fork
-          data[0].value += repo.forks;
+          data[0].value += parseInt(repo.forks, base10Radix);
           // Add Issue
-          data[1].value += repo.open_issues_count;
+          data[1].value += parseInt(repo.open_issues_count, base10Radix);
           // Add StarGazers
-          data[2].value += repo.stargazers_count;
+          data[2].value += parseInt(repo.stargazers_count, base10Radix);
         });
         return data;
       }

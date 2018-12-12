@@ -16,7 +16,21 @@ import { loadRepos } from '../../App/actions';
 
 describe('<HomePage />', () => {
   const mockStore = configureMockStore();
-  const store = mockStore(fromJS({}));
+  const store = mockStore(
+    fromJS([
+      [
+        'global',
+        [
+          ['loading', false],
+          ['error', false],
+          ['currentUser', 'codefry'],
+          ['userData', [['repositories', []], ['events', []]]],
+        ],
+        ['home'],
+        ['router'],
+      ],
+    ]),
+  );
 
   it('should render the repos list', () => {
     const renderedComponent = shallow(
