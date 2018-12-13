@@ -20,6 +20,7 @@ import IssueIcon from 'components/IssueIcon';
 const styles = theme => ({
   card: {
     maxWidth: 400,
+    minWidth: 398,
     height: '228px',
     pading: 8,
   },
@@ -108,7 +109,7 @@ const RepoCard = ({
 
   return (
     <Card className={classes.card}>
-      <Paper className={classes.paper} elevation={24}>
+      <Paper className={classes.paper} elevation={0}>
         <CardHeader
           avatar={
             <Avatar aria-label="project" className={classes.avatar}>

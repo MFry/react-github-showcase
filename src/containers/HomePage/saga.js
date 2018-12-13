@@ -26,8 +26,12 @@ export function* getRepos() {
     // Call our request helper (see 'utils/request')
     const repos = yield call(request, requestURL);
     // Mock data injected
-    const mockedRepos = repos.concat(mockRepos);
-    yield put(reposLoaded(mockedRepos, username));
+    if (process.env.NODE_ENV !== 'test') {
+      const mockedRepos = repos.concat(mockRepos);
+      yield put(reposLoaded(mockedRepos, username));
+    } else {
+      yield put(reposLoaded(repos, username));
+    }
   } catch (err) {
     yield put(repoLoadingError(err));
   }
@@ -43,8 +47,12 @@ export function* getEvents() {
   try {
     const events = yield call(request, requestURL);
     // Mock data injected
-    const mockedEvents = events.concat(mockEvents);
-    yield put(eventsLoaded(mockedEvents, username));
+    if (process.env.NODE_ENV !== 'test') {
+      const mockedEvents = events.concat(mockEvents);
+      yield put(eventsLoaded(mockedEvents, username));
+    } else {
+      yield put(eventsLoaded(events, username));
+    }
   } catch (err) {
     yield put(eventsLoadingError(err));
   }

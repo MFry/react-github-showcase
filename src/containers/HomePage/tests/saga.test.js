@@ -13,11 +13,14 @@ const username = 'mxstbr';
 
 /* eslint-disable redux-saga/yield-effects */
 describe('getRepos Saga', () => {
+  const setENV = process.env;
   let getReposGenerator;
 
   // We have to test twice, once for a successful load and once for an unsuccessful one
   // so we do all the stuff that happens beforehand automatically in the beforeEach
   beforeEach(() => {
+    jest.resetModules();
+    process.env = { ...setENV, NODE_ENV: 'test' };
     getReposGenerator = getRepos();
 
     const selectDescriptor = getReposGenerator.next().value;

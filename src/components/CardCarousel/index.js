@@ -68,6 +68,46 @@ const CardCarousel = ({ loading, error, repos }) => {
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PreviousArrow />,
+    responsive: [
+      {
+        breakpoint: 1710,
+        settings: {
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          nextArrow: <NextArrow />,
+          prevArrow: <PreviousArrow />,
+        },
+      },
+      {
+        breakpoint: 1288,
+        settings: {
+          centerMode: true,
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: <NextArrow />,
+          prevArrow: <PreviousArrow />,
+        },
+      },
+      {
+        breakpoint: 964,
+        settings: {
+          centerMode: true,
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: <NextArrow />,
+          prevArrow: <PreviousArrow />,
+        },
+      },
+    ],
   };
   if (loading) {
     return <List component={LoadingIndicator} />;

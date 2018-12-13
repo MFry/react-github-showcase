@@ -13,7 +13,11 @@ const Title = styled.h1`
 const IntroBanner = ({ username }: { username: string }) => (
   <Hero>
     <Title>
-      <Code>@{username}</Code> portfolio
+      <Code>
+        @{username}
+        {"'s"}
+      </Code>{' '}
+      portfolio
     </Title>
     <p />
   </Hero>

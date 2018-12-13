@@ -22,7 +22,8 @@ import {
 } from './constants';
 
 // The initial state of the App
-const initialState = fromJS({
+// We export it for testing
+export const initialState = fromJS({
   loading: false,
   error: false,
   currentUser: false,
