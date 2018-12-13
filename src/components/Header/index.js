@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
@@ -12,20 +13,9 @@ const HeaderWrapper = styled.div`
   color: white;
 `;
 
-// eslint-disable-next-line no-unused-vars
-const LogoWrapper = styled.img`
-  animation: App-logo-spin infinite 20s linear;
-  height: 5vmin;
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`;
-
-const Header = () => <HeaderWrapper />;
+// eslint-disable-next-line react/require-default-props
+const Header = ({ children }: { children?: React.Node }) => (
+  <HeaderWrapper>{children}</HeaderWrapper>
+);
 
 export default Header;
